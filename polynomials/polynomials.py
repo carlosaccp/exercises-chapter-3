@@ -93,9 +93,9 @@ class Polynomial:
 
     def __pow__(self, other):
         if isinstance(other, Integral):
-            temp = Polynomial(self.coefficients)
-            for i in range(0, other):
-                 self = self*temp
+            temp1 = Polynomial(self.coefficients)
+            for i in range(1, other):
+                 self = temp1*self
             return self
         else:
             return NotImplemented
