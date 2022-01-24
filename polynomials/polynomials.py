@@ -109,3 +109,18 @@ class Polynomial:
 
         else:
             return NotImplemented
+
+    def dx(self):
+        if self.degree() >0:
+            coefs = [i * j for i,j in zip(self.coefficients, tuple(i for i in range(0, self.degree()+1)))]
+            coefs.pop(0)
+            return Polynomial(tuple(coefs))
+        else:
+            return Polynomial((0,))
+
+def derivative(poly):
+    if isinstance(poly, Polynomial):
+        return poly.dx()
+    else:
+        return NotImplemented
+    
