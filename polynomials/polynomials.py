@@ -73,16 +73,16 @@ class Polynomial:
     
     def __mul__(self, other):
         if isinstance(other, Polynomial):
-            new_deg = self.degree() + other.degree()
+            new_deg = self.degree() + other.degree() + 1
             coefs = [0] * new_deg
             for i in range(0, self.degree()+1):
                 for j in range(0, other.degree()+1):
-                    coefs[i+j] == self.coefficients[i]*other.coefficients[j]
+                    coefs[i+j] += self.coefficients[i] * other.coefficients[j]
             
-            return Polynomial(coefs)
+            return Polynomial(tuple(coefs))
 
         elif isinstance(other, Number):
-            coefs = (other * i for i in self.coefficients)
+            coefs = tuple(other * i for i in self.coefficients)
             return Polynomial(coefs)
 
         else:
